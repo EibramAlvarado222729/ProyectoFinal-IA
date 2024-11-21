@@ -1,0 +1,465 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    background-color: #2b2b2b;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.cont{
+    width: 70%;
+    height: auto;
+}
+.cont-inf{
+    background-color: #1b1b1b;
+    width: 100%;
+    height: 60vh;
+    color: #00fa2ad8;
+    border-radius: 10px;
+    /* display: inline-block;
+    justify-content: center;
+    align-items: center; */
+}
+.text-inf{
+    text-align: center;
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.img-spo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.cont-inf img{
+    width: 60%;
+}
+.cont-btn-log{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0.6em 2em;
+    border: #00fa2ad8 solid 0.15em;
+    border-radius: 5em;
+    color: #00fa2ad8;
+    font-size: 1.5em;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border 300ms, color 300ms;
+    user-select: none;
+}
+  
+.button p {
+    z-index: 1;
+}
+
+.button:hover {
+    color: #212121;
+}
+
+.button:active {
+    border-color: teal;
+}
+
+.button::after, .button::before {
+    content: "";
+    position: absolute;
+    width: 9em;
+    aspect-ratio: 1;
+    background: #00fa2ad8;
+    opacity: 50%;
+    border-radius: 50%;
+    transition: transform 500ms, background 300ms;
+}
+
+.button::before {
+    left: 0;
+    transform: translateX(-8em);
+}
+
+.button::after {
+    right: 0;
+    transform: translateX(8em);
+}
+
+.button:hover:before {
+    transform: translateX(-1em);
+}
+
+.button:hover:after {
+    transform: translateX(1em);
+}
+
+.button:active:before,
+.button:active:after {
+    background: teal;
+}
+
+/*Inicio*/
+
+.cont-logout{
+    position: absolute;
+    top: 0;
+    left: 85%;
+    padding: 10px;
+    width: 13%;
+    height: 7%;
+    margin: 10px;
+    display: grid;
+    align-items: center;
+}
+
+.animated-button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    font-size: 16px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 600;
+    color: #ffffff40;
+    box-shadow: 0 0 0 2px #ffffff20;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.animated-button span:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #00fa2ad8;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.animated-button span:first-child {
+    position: relative;
+    z-index: 1;
+}
+
+.animated-button:hover {
+    box-shadow: 0 0 0 5px #21f33360;
+    color: #ffffff;
+}
+
+.animated-button:active {
+    scale: 0.95;
+}
+
+.animated-button:hover span:last-child {
+    width: 100%;
+    height: 150px;
+    opacity: 1;
+}  
+
+.text-esc{
+  display: block;
+  font-family: Arial;
+  color: #ffff;
+  font-size: 2rem;
+  white-space: nowrap;
+  border-right: 4px solid;
+  width: 100%;
+  animation: typing 2s steps(12), blink .5s infinite step-end alternate;
+  overflow: hidden;
+}
+
+@keyframes typing{
+
+  from { width: 0 }
+
+}
+
+@keyframes blink{
+  50% { border-color: transparent }
+}
+
+.cont-gad{
+    width: 100%;
+    height: auto;
+    margin-top: 3vh;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.5s ease;
+}
+
+.cards {
+    width: 30%;
+    height: 5vh;
+    background-color: #00fa2ad8;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.cards.active {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background-color: transparent;
+    border: solid 2px #00fa2ad8;
+    justify-content: start;
+    padding: 20px;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.cards .text {
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    font-family: arial;
+    font-size: 1.1rem;
+}
+
+.cards.active span {
+    color: #fff;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cards.active .close-btn {
+    display: flex;
+}
+
+/* .color-div {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 8px;
+    display: none;
+}
+
+.cards.active .color-div {
+    display: block;
+} */
+
+/* Animaciones */
+.slide-left {
+    animation: slideLeft 0.5s forwards;
+    display: none;
+}
+
+.slide-right {
+    animation: slideRight 0.5s forwards;
+    display: none;
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes slideRight {
+    0% { transform: translateX(0); opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
+}
+
+.quick-transition {
+    transition: all 0.2s ease; 
+}
+
+.feedback-container {
+    display: none;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+.cards.active .feedback-container {
+    display: block;
+}
+
+.emoji-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.emoji {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.emoji:hover {
+    transform: scale(1.5);
+}
+
+/* Barra de progreso */
+.progress-bar {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: #444; 
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background: #00fa2a; 
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.loading {
+    font-size: 20px;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+.recomendaciones-container{
+    display: none;
+}
+.cards.active .recomendaciones-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.track-item {
+    width: 200px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.track-item:hover {
+    transform: translateY(-5px);
+}
+
+.track-info img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.track-actions button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1db954;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.track-actions button:hover {
+    background-color: #1ed760;
+}
+
+.search-container{
+    display: none;
+}
+.cards.active .search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#artist-search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-grow: 1;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#search-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #1DB954;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-btn:hover {
+    background-color: #1ed760;
+}
+.artist-info{
+    display: none;
+}
+.cards.active .artist-info {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.artist-info img {
+    max-width: 200px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.artist-info p {
+    font-size: 16px;
+    color: #fff;
+    margin: 5px 0;
+}
+

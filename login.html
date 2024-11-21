@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="cont">
+        <div class="cont-inf">
+            <div class="text-inf">
+                <div class="img-spo">
+                    <img src="img/spotify-hd-logo.png" alt="">
+                </div>
+                <h1>Aplicacion web-Proyecto.</h1>
+                <h3>Aqui puedes consultar cosas basicas sobre spotify de lo cual seras asitido por IA</h3>
+                <p>Inicia secion.</p>
+            </div>
+        </div>
+        <div class="cont-btn-log">
+            <button class="button" onclick="loginWithSpotify()">
+                <p>Iniciar</p>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function loginWithSpotify() {
+            const clientId = 'cab3835c7a7a442899c734cf1b7ecd44'; // Reemplaza con tu Client ID de Spotify
+            const redirectUri = 'http://127.0.0.1:5500/index.html'; // Asegúrate de que esta URL sea válida
+            const scopes = [
+                'user-read-private',
+                'user-read-email',
+                'user-top-read',
+            ];
+
+            // Construir la URL de autenticación de Spotify
+            const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scopes.join('%20')}`;
+
+            // Redirigir al usuario a la página de inicio de sesión de Spotify
+            window.location.href = authUrl;
+        }
+    </script>
+
+</body>
+</html>

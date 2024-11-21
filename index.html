@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Bienvenida</title>
+</head>
+<body>
+
+    <div class="cont-logout">
+        <button class="animated-button" id="logout-button">
+            <span>Cerrar Sesión</span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="cont-bie">
+        <div style="text-align: center;">
+            <span class="text-esc">Bienvenido, ¿en qué te puedo ayudar?</span>
+        </div>
+        <div class="cont-gad">
+            <div class="cards" id="recomendacion">
+                <span>Recomendación</span>
+                <button class="close-btn">&times;</button>
+                <div class="expanded-content">
+                    <div class="feedback-container">
+                        <h1>¿Cuál es tu estado de ánimo?</h1>
+                        <div class="emoji-bar">
+                            <!-- Emojis para seleccionar estado de ánimo -->
+                            <span class="emoji" data-value="0%">😢</span>
+                            <span class="emoji" data-value="25%">😞</span>
+                            <span class="emoji" data-value="50%">😐</span>
+                            <span class="emoji" data-value="75%">🙂</span>
+                            <span class="emoji" data-value="100%">😁</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="progress-text">
+                            Selecciona el emoji que defina tu estado de ánimo
+                        </div>
+                    </div>
+                    <!-- Contenedor para las recomendaciones -->
+                    <div id="recomendaciones-container" class="recomendaciones-container"></div>
+                </div>
+            </div>            
+            <div class="cards" id="artista">
+                <span>Artista</span>
+                <button class="close-btn">&times;</button>
+                <div class="search-container">
+                    <input type="text" id="artist-search" placeholder="Busca un artista...">
+                    <button id="search-btn">Buscar</button>
+                </div>
+                <div id="artist-info" class="artist-info"></div> <!-- Contenedor para mostrar la info del artista -->
+            </div>
+            
+            <div class="cards" id="chat">
+                <span>Chat</span>
+                <button class="close-btn">&times;</button>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Manejo del token de acceso
+        const hash = window.location.hash
+            .substring(1)
+            .split('&')
+            .reduce((acc, item) => {
+                const parts = item.split('=');
+                acc[parts[0]] = parts[1];
+                return acc;
+            }, {});
+
+        if (hash.access_token) {
+            // Guardar el token en localStorage
+            localStorage.setItem('spotifyAccessToken', hash.access_token);
+
+            // Limpiar el hash de la URL
+            window.history.replaceState(null, null, ' ');
+        }
+
+        // Verificar si el usuario está autenticado
+        const accessToken = localStorage.getItem('spotifyAccessToken');
+
+        if (!accessToken) {
+            // Si no hay token, redirigir al login
+            window.location.href = 'login.html';
+        }
+
+        // Manejar el evento de cerrar sesión
+        document.getElementById("logout-button").addEventListener("click", function() {
+            localStorage.removeItem('spotifyAccessToken'); // Eliminar token
+            window.location.href = 'login.html'; // Redirigir al login
+        });
+    </script>
+    <script src="scripts_cards.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="script-inf.js"></script>
+
+</body>
+</html>
